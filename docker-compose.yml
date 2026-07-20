@@ -1,0 +1,11 @@
+services:
+  app:
+    build: .
+    container_name: oauth2
+    ports:
+        - "8084:8084"
+    environment:
+        DB_URL: jdbc:oracle:thin:@host.docker.internal:1522/XEPDB1
+        DB_USERNAME: system
+        DB_PASSWORD: password
+    restart: always

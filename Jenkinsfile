@@ -15,18 +15,20 @@ pipeline {
                 bat 'mvn clean package'
             }
         }
-    }
 
-    stage('Test') {
-        steps {
-            bat 'mvn test'
+
+        stage('Test') {
+            steps {
+                bat 'mvn test'
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                bat 'docker rm -f login-full'
+                bat 'docker compose up - --build'
+            }
         }
     }
 
-    stage('Deploy') {
-        steps {
-            bat 'docker rm -f login-full'
-            bat 'docker compose up - --build'
-        }
-    }
 }

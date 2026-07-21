@@ -25,8 +25,8 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                bat 'docker rm -f login-full'
-                bat 'docker compose up - --build'
+                bat 'docker rm -f oauth2-full'
+                bat 'docker compose up -d --build'
             }
         }
     }
